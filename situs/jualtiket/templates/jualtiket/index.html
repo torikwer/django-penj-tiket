@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <title>Jual Tiket</title>
+    </head>
+    <style type="text/css">
+        body {
+            font-family: arial;
+            margin: 0 0 0 0;
+            height: 100%;
+        }
+        .header {
+            background-color: grey;
+            height: 200px;
+        }
+        .tabel {
+            background-color: pink;
+            height: auto;
+            margin-right: 400px;
+            margin-left: 150px;
+            padding: 10px;
+        }
+        .judul {
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 200%;
+            color: white;
+        }
+    </style>
+    <body>
+        <div class="header">
+            <h1 class="judul">Daftar Tiket yang tersedia</h1>
+        </div>
+        <div class="tabel" align="center">
+            {% if daftar_tiket %}
+            <table border="1">
+                <tr height="30">
+                    <th>Nama Film</th>
+                    <th>Harga per Satuan ( Rp. )</th>
+                    <th>Jumlah Tiket yang Tersedia</th>
+                </tr>
+                {% for tiket in daftar_tiket %}
+                <tr height="50">
+                    <td>{{ tiket.nama_film }}</td>
+                    <td align="center">{{ tiket.harga_satuan }}</td>
+                    <td align="center">{{ tiket.jumlah_tiket }}</td>
+                </tr>
+            {% endfor %}
+            </table>
+       {% endif %}
+       </div>
+        <!-- contoh
+        {% if daftar_tiket %}
+            <ul>
+            {% for tiket in daftar_tiket %}
+                <li><a href="/jualtiket/{{ tiket.id }}/">{{ tiket.nama_film }}</a></li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>TIdak ada tiket tersedia</p>
+        {% endif %}
+        -->
+    </body>
+</html>
